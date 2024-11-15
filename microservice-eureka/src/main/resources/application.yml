@@ -1,0 +1,21 @@
+#Puerto del servidor de Eureka
+server:
+  port: 8761
+
+#Nombre de la aplicacion
+spring:
+  application:
+    name: msvc-eureka
+  config:
+    import: optional:configserver:http://localhost:8888 #configuracion provisional
+
+#El localhost sera el sitio donde tendre alojado mi servidor eureka
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false # eso se pone a false para que eureka no se registre a si mismo
+    fetch-registry: false
+    server-url:
+      defaultZone: http://localhost:${server.port}/eureka/ #la ruta en la que va a funcionar el servidor de eureka
+
