@@ -8,7 +8,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/studentDb
     username: root
-    password: hermanos16?
+    password: 260697
   jpa:
     hibernate:
       ddl-auto: create

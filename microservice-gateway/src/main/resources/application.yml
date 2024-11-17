@@ -1,0 +1,24 @@
+server:
+  port: 8080 #siempre va a ser el 8080
+
+spring:
+  config:
+    import: optional:configserver:http://localhost:8888 #configuracion provisional
+  application:
+    name: msvc-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true # con eso le decimos que gateway est habilitado
+      routes:
+        #Con las rutas le indicamos al gateway donde estan los otros microservicos
+        - id: students
+          uri: http://localhost:8090
+          predicates:
+            - Path=/api/student/**
+        - id: courses
+          uri: http://localhost:9090
+          predicates:
+            - Path=/api/course/**
+
